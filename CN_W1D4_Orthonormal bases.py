@@ -187,6 +187,57 @@ plot_data(X)
 # In two dimensions, it is easy to make an arbitrary orthonormal basis. All we need is a random vector u, which we have normalized. We can now define the second basis vector to be w=[−u2,u1], and [u w] will be an orthnormal basis.
 
 # %%
+def define_orthonormal_basis(u):
+  """
+  Calculates an orthonormal basis given an arbitrary vector u.
+
+  Args:
+    u (numpy array of floats) : arbitrary 2-dimensional vector used for new
+                                basis
+
+  Returns:
+    (numpy array of floats)   : new orthonormal basis
+                                columns correspond to basis vectors
+  """
+
+  #################################################
+  ## TODO for students: calculate the orthonormal basis
+  # Fill out function and remove
+  #raise NotImplementedError("Student exercise: implement the orthonormal basis function")
+  #################################################
+
+  # Normalize vector u
+  u = np.array([u[0]/np.linalg.norm(u),u[1]/np.linalg.norm(u)])
+
+  # Calculate vector w that is orthogonal to u
+  w = np.array([-u[1],u[0]])
+
+  # Put in matrix form
+  W = np.column_stack([u, w])
+
+  return W
+
+
+# Set up parameters
+np.random.seed(2020)  # set random seed
+variance_1 = 1
+variance_2 = 1
+corr_coef = 0.8
+u = np.array([3, 1])
+
+# Compute covariance matrix
+cov_matrix = calculate_cov_matrix(variance_1, variance_2, corr_coef)
+
+# Generate data
+X = get_data(cov_matrix)
+
+# Get orthonomal basis
+W = define_orthonormal_basis(u)
+
+# Visualize
+plot_basis_vectors(X, W)
+
+# %%
 
 
 
