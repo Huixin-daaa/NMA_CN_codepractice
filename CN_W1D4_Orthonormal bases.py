@@ -237,7 +237,47 @@ W = define_orthonormal_basis(u)
 # Visualize
 plot_basis_vectors(X, W)
 
-# %%
+# %% [markdown]
+# ## Change to orthonormal basis
 
+# %% [markdown]
+# Since W is orthonormal, we can project the data into our new basis using simple matrix multiplication : Y=XW
+# 
+# For X and Y:
+# - each row = each vector
+# - each col = each coordinate 
+
+# %%
+def change_of_basis(X, W):
+  """
+  Projects data onto new basis W.
+
+  Args:
+    X (numpy array of floats) : Data matrix each column corresponding to a
+                                different random variable
+    W (numpy array of floats) : new orthonormal basis columns correspond to
+                                basis vectors
+
+  Returns:
+    (numpy array of floats)    : Data matrix expressed in new basis
+  """
+
+  #################################################
+  ## TODO for students: project the data onto a new basis W
+  # Fill out function and remove
+  # raise NotImplementedError("Student exercise: implement change of basis")
+  #################################################
+
+  # Project data onto new basis described by W
+  Y = X @ W
+
+  return Y
+
+
+# Project data to new basis
+Y = change_of_basis(X, W)
+
+# Visualize
+plot_data_new_basis(Y)
 
 
